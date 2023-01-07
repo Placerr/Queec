@@ -1,0 +1,28 @@
+﻿{
+	"name": "Multiplayer chat example",
+	"version": "1.0.0.0",
+	"description": "",
+	"id": "",
+	"viewport-width": 640,
+	"viewport-height": 480,
+	"author": "",
+	"email": "",
+	"website": "",
+	"orientations": "any",
+	"c2version": "244",
+	"used-plugins": [
+		"Browser",
+		"Button",
+		"Function",
+		"Keyboard",
+		"List",
+		"Mouse",
+		"Multiplayer",
+		"NinePatch",
+		"Sprite",
+		"Text",
+		"TextBox"
+	],
+	"used-behaviors": [
+	]
+}
