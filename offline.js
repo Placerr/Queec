@@ -1,5 +1,5 @@
 ﻿{
-	"version": 1673100856,
+	"version": 1673152812,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
@@ -10,15 +10,22 @@
 		"sprite-sheet0.png",
 		"9patch2.png",
 		"9patch3.png",
+		"untitled9recovered-sheet0.png",
+		"9patch4.png",
+		"sprite2-sheet0.png",
+		"sprite3-sheet0.png",
 		"icon-16.png",
 		"icon-32.png",
 		"icon-114.png",
 		"icon-128.png",
 		"icon-256.png",
 		"loading-logo.png",
+		"be.png",
 		"c2mp-net.js",
 		"c2mp-peer.js",
 		"c2mp.js",
-		"waker.js"
+		"waker.js",
+		"push.js",
+		"icon.png"
 	]
 }

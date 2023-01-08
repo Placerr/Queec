@@ -19,9 +19,11 @@
 		"Mouse",
 		"Multiplayer",
 		"NinePatch",
+		"PushJs",
 		"Sprite",
 		"Text",
-		"TextBox"
+		"TextBox",
+		"Touch"
 	],
 	"used-behaviors": [
 	]
