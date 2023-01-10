@@ -13,6 +13,7 @@
 	"used-plugins": [
 		"Browser",
 		"Button",
+		"Dropbox",
 		"Function",
 		"Keyboard",
 		"List",
@@ -20,11 +21,18 @@
 		"Multiplayer",
 		"NinePatch",
 		"PushJs",
+		"Rex_Date",
+		"ScirraArcade",
+		"ScirraArcadeV4",
 		"Sprite",
 		"Text",
 		"TextBox",
-		"Touch"
+		"Touch",
+		"video"
 	],
 	"used-behaviors": [
+		"Anchor",
+		"Bullet",
+		"Fade"
 	]
 }
