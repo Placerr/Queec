@@ -1,5 +1,5 @@
 ﻿{
-	"name": "Multiplayer chat example",
+	"name": "Queec",
 	"version": "1.0.0.0",
 	"description": "",
 	"id": "",
@@ -15,6 +15,7 @@
 		"Button",
 		"Dropbox",
 		"Function",
+		"HTML_iFrame",
 		"Keyboard",
 		"List",
 		"Mouse",
@@ -27,7 +28,10 @@
 		"Sprite",
 		"Text",
 		"TextBox",
+		"TiledBg",
 		"Touch",
+		"rojoPaster",
+		"sliderbar",
 		"video"
 	],
 	"used-behaviors": [
