@@ -1,0 +1,43 @@
+﻿{
+	"name": "Multiplayer chat example",
+	"version": "1.0.0.0",
+	"description": "",
+	"id": "",
+	"viewport-width": 640,
+	"viewport-height": 480,
+	"author": "",
+	"email": "",
+	"website": "",
+	"orientations": "any",
+	"c2version": "244",
+	"used-plugins": [
+		"Browser",
+		"Button",
+		"Dropbox",
+		"Function",
+		"HTML_iFrame",
+		"Keyboard",
+		"List",
+		"Mouse",
+		"Multiplayer",
+		"NinePatch",
+		"PushJs",
+		"Rex_Date",
+		"ScirraArcade",
+		"ScirraArcadeV4",
+		"Sprite",
+		"Text",
+		"TextBox",
+		"TiledBg",
+		"Touch",
+		"rex_youtube_player",
+		"rojoPaster",
+		"sliderbar",
+		"video"
+	],
+	"used-behaviors": [
+		"Anchor",
+		"Bullet",
+		"Fade"
+	]
+}
