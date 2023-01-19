@@ -1,6 +1,6 @@
 ﻿{
-	"name": "Queec C",
-	"version": "1.0.0.0",
+	"name": "Queec Cube",
+	"version": "1.12.0",
 	"description": "",
 	"id": "",
 	"viewport-width": 640,
@@ -11,19 +11,21 @@
 	"orientations": "any",
 	"c2version": "244",
 	"used-plugins": [
-		"Arr",
+		"Audio",
 		"Browser",
 		"Button",
-		"Dropbox",
 		"Function",
 		"HTML_iFrame",
 		"Keyboard",
 		"List",
+		"LocalStorage",
 		"Mouse",
 		"Multiplayer",
 		"NinePatch",
+		"NodeWebkit",
+		"Pode_DragNDropZone",
 		"PushJs",
-		"Rex_Date",
+		"Rex_UID2Prop",
 		"ScirraArcade",
 		"ScirraArcadeV4",
 		"Sprite",
@@ -31,7 +33,7 @@
 		"TextBox",
 		"TiledBg",
 		"Touch",
-		"rex_youtube_player",
+		"WebStorage",
 		"rojoPaster",
 		"sliderbar",
 		"video"
@@ -39,6 +41,8 @@
 	"used-behaviors": [
 		"Anchor",
 		"Bullet",
-		"Fade"
+		"Fade",
+		"NoSave",
+		"Pin"
 	]
 }
