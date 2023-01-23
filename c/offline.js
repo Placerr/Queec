@@ -1,5 +1,5 @@
 ﻿{
-	"version": 1674124964,
+	"version": 1674490064,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
@@ -43,6 +43,11 @@
 		"9patkkkkch-sheet0.png",
 		"ikojo-sheet0.png",
 		"9patch11-sheet0.png",
+		"9patch12.png",
+		"sprite13-sheet0.png",
+		"fyy-sheet0.png",
+		"untitledmojg-sheet0.png",
+		"untitledmojg-sheet1.png",
 		"windows unlock.m4a",
 		"windows unlock.ogg",
 		"windows startup.m4a",

@@ -25,6 +25,7 @@
 		"NodeWebkit",
 		"Pode_DragNDropZone",
 		"PushJs",
+		"Rex_Date",
 		"Rex_UID2Prop",
 		"ScirraArcade",
 		"ScirraArcadeV4",
@@ -43,6 +44,7 @@
 		"Bullet",
 		"Fade",
 		"NoSave",
-		"Pin"
+		"Pin",
+		"Sin"
 	]
 }
