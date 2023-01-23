@@ -7,6 +7,9 @@
 	var RTCSessionDescription = window["RTCSessionDescription"] || window["webkitRTCSessionDescription"] || window["mozRTCSessionDescription"] || window["msRTCSessionDescription"];
 	var RTCIceCandidate = window["RTCIceCandidate"] || window["webkitRTCIceCandidate"] || window["mozRTCIceCandidate"] || window["msRTCIceCandidate"];
 	
+	// Note Firefox uses name DataChannel instead of RTCDataChannel. See https://bugzilla.mozilla.org/show_bug.cgi?id=1173851
+	var RTCDataChannel = window["RTCDataChannel"] || window["DataChannel"] || window["webkitRTCDataChannel"] || window["mozRTCDataChannel"] || window["msRTCDataChannel"];
+	
 	var Peer = window["C2Peer"];
 	var RegisteredObject = window["C2RegisteredObject"];
 	var NetValue = window["C2NetValue"];
@@ -17,17 +20,13 @@
 	var SIGNALLING_PROTOCOL_REVISION = 1;
 	var MAGIC_NUMBER = 0x63326D70;	// to identify non-fragmented messages originating from this protocol
 	var DEFAULT_ICE_SERVER_LIST = [
-		{ "urls": "stun:stun.l.google.com:19302" },
-		{ "urls": "stun:stun1.l.google.com:19302" },
-		{ "urls": "stun:stun2.l.google.com:19302" },
-		{ "urls": "stun:stun3.l.google.com:19302" },
-		{ "urls": "stun:stun4.l.google.com:19302" },
-		{ "urls": "stun:23.21.150.121" }		// mozilla-operated server
+		{ "urls": "stun:stun.l.google.com:19302" }
 	];
 	
 	window["C2Multiplayer_IsSupported"] = function ()
 	{
-		return !!RTCPeerConnection && typeof ArrayBuffer !== "undefined" && typeof DataView !== "undefined";
+		// Note Edge 16 supports RTCPeerConnection but not RTCDataChannel, so check for that too
+		return !!RTCPeerConnection && !!RTCDataChannel && typeof ArrayBuffer !== "undefined" && typeof DataView !== "undefined";
 	};
 	
 	// Multiplayer object
@@ -589,6 +588,15 @@
 			this.onsignallingkicked();
 	};
 	
+	C2Multiplayer.prototype.onPeerKicked = function ()
+	{
+		this.room = "";
+		
+		// note same callback as signalling kick event
+		if (this.onsignallingkicked)
+			this.onsignallingkicked();
+	};
+	
 	C2Multiplayer.prototype.onSignallingReceivePeerJoined = function (o)
 	{
 		if (!this.signalling_loggedin || !this.room || this.me !== this.host)
@@ -636,9 +644,11 @@
 			
 		var self = this;
 		
-		this.host.pc.setRemoteDescription(new RTCSessionDescription(o.offer), function ()
+		this.host.pc.setRemoteDescription(new RTCSessionDescription(o.offer))
+		.then(function ()
 		{
-			self.host.pc.createAnswer(function (answer)
+			self.host.pc.createAnswer()
+			.then(function (answer)
 			{
 				self.host.pc.setLocalDescription(answer);
 				
@@ -647,14 +657,16 @@
 					toclientid: self.host.id,
 					answer: answer
 				});
-			}, function (err)
+			})
+			.catch(function (err)
 			{
 				console.error("Peer error creating answer: ", err);
 				
 				if (self.onpeererror)
 					self.onpeererror(self.me, "could not create answer to host offer");
 			});
-		}, function (err) 
+		})
+		.catch(function (err) 
 		{
 			console.error("Peer error setting remote description: ", err);
 			
@@ -673,10 +685,8 @@
 		if (!peer)
 			return;
 		
-		peer.pc.setRemoteDescription(new RTCSessionDescription(o.answer), function ()
-		{
-			// success callback: required, but ignore
-		}, function (err) {
+		peer.pc.setRemoteDescription(new RTCSessionDescription(o.answer))
+		.catch(function (err) {
 			console.error("Host error setting remote description: ", err);
 		});
 	};
@@ -989,7 +999,7 @@
 			this.stats.lastSecondTime += 1000;
 			
 			// If fallen more than 500ms behind, just update to current time
-			if (nowtime - this.lastSecondTime > 500)
+			if (nowtime - this.stats.lastSecondTime > 500)
 				this.stats.lastSecondTime = nowtime;
 		}
 		

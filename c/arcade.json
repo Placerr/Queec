@@ -9,7 +9,8 @@
 	"email": "",
 	"website": "",
 	"orientations": "any",
-	"c2version": "244",
+	"c2version": "279",
+	"ife": false,
 	"used-plugins": [
 		"Audio",
 		"Browser",
@@ -26,6 +27,8 @@
 		"Pode_DragNDropZone",
 		"PushJs",
 		"Rex_Date",
+		"Rex_FirebaseAPIV3",
+		"Rex_Firebase_Storage",
 		"Rex_UID2Prop",
 		"ScirraArcade",
 		"ScirraArcadeV4",
@@ -35,6 +38,7 @@
 		"TiledBg",
 		"Touch",
 		"WebStorage",
+		"filechooser",
 		"rojoPaster",
 		"sliderbar",
 		"video"

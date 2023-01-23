@@ -176,7 +176,7 @@
 			{
 				//self.isConnected = true;
 			}
-			else if (self.pc.iceConnectionState === "disconnected" || self.pc.iceConnectionState === "failed" || self.pc.iceConnectionState === "closed")
+			else if (self.pc.iceConnectionState === "failed" || self.pc.iceConnectionState === "closed")
 			{
 				self.remove("disconnect");
 			}
@@ -199,7 +199,8 @@
 			this.attachDatachannelHandlers(this.dcu, "u");
 			
 			// Create an offer and dispatch it to the peer
-			this.pc.createOffer(function (offer)
+			this.pc.createOffer()
+			.then(function (offer)
 			{
 				self.pc.setLocalDescription(offer);
 				
@@ -208,7 +209,8 @@
 					toclientid: self.id,
 					offer: offer
 				});
-			}, function (err)
+			})
+			.catch(function (err)
 			{
 				console.error("Host error creating offer for peer '" + self.id + "': " + err);
 				
@@ -787,6 +789,10 @@
 		switch (o["c"]) {
 		case "disconnect":		// connection being closed from other end
 			
+			// If this is a kick, trigger 'On kicked'
+			if (o["k"])
+				this.mp.onPeerKicked();
+			
 			// If not the host, we've lost the host connection and are therefore no longer
 			// in the room. So also leave the room on the signalling server too.
 			// This must be checked before remove() since it will clear the me/host peers.
@@ -1214,7 +1220,7 @@
 		}
 	};
 	
-	Peer.prototype.remove = function (reason)
+	Peer.prototype.remove = function (reason, isKick)
 	{
 		// If the peerconnection is closed in this call, later calls to onclose could try to remove it
 		// again, by which time the peer could have joined again. So ensure we only ever remove the peer once.
@@ -1229,7 +1235,8 @@
 		// send() could throw and try to remove the peer again, but the wasRemoved check will catch that.
 		this.send("o", JSON.stringify({
 			"c": "disconnect",
-			"r": reason
+			"r": reason,
+			"k": !!isKick
 		}));
 		
 		closeIgnoreException(this.dco);

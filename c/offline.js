@@ -1,9 +1,9 @@
 ﻿{
-	"version": 1674491159,
+	"version": 1674517677,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
-		"jquery-2.1.1.min.js",
+		"jquery-3.4.1.min.js",
 		"offlineClient.js",
 		"9patch.png",
 		"untitled90png-sheet0.png",
@@ -48,6 +48,7 @@
 		"fyy-sheet0.png",
 		"untitledmojg-sheet0.png",
 		"untitledmojg-sheet1.png",
+		"sprite14-sheet0.png",
 		"windows unlock.m4a",
 		"windows unlock.ogg",
 		"windows startup.m4a",
@@ -72,6 +73,7 @@
 		"c2mp.js",
 		"waker.js",
 		"push.js",
-		"icon.png"
+		"icon.png",
+		"firebase.js"
 	]
 }
